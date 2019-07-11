@@ -4,18 +4,24 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="primaryColor">#9c27b0</color>
-    
     <color name="primaryLightColor">#d05ce3</color>
-    
     <color name="primaryDarkColor">#6a0080</color>
-    
     <color name="secondaryColor">#0288d1</color>
-    
     <color name="secondaryLightColor">#5eb8ff</color>
-    
     <color name="secondaryDarkColor">#005b9f</color>
-    
     <color name="primaryTextColor">#ffffff</color>
-    
     <color name="secondaryTextColor">#000000</color>
+    <color name="design_default_color_background">#ffffffff</color>
+    <color name="design_default_color_error">#ffb00020</color>
+    <color name="design_default_color_on_primary">#ffffffff</color>
+    <color name="design_default_color_on_secondary">#ff000000</color>
+    <color name="design_default_color_primary">#ff6200ee</color>
+    <color name="design_default_color_primary_dark">#ff3700b3</color>
+    <color name="design_default_color_primary_variant">#ff3700b3</color>
+    <color name="design_default_color_secondary">#ff03dac6</color>
+    <color name="design_default_color_secondary_variant">#ff018786</color>
+    <color name="design_default_color_surface">#ffffffff</color>
+    <color name="ic_launcher_background">#ffa6961d</color>
+    <color name="ic_majeno_background">#ff59a65a</color>
+  
 </resources>

@@ -18,7 +18,7 @@ import com.android.volley.toolbox.Volley;
 import com.jerbo.llanteria.PaginaPrincipal.MainActivity;
 import com.jerbo.llanteria.R;
 
-public class AddCliente extends AppCompatActivity {
+public class AddClientejava extends AppCompatActivity {
     TextInputLayout nombre, apellido, direccion, correo, dni;
     Button aceptar, cancelar;
     ProgressBar progressBar;
