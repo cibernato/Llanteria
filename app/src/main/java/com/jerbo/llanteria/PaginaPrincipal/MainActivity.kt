@@ -2,6 +2,7 @@ package com.jerbo.llanteria.PaginaPrincipal
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import com.google.android.material.navigation.NavigationView
 import androidx.core.view.GravityCompat
@@ -11,10 +12,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.TextView
 import com.jerbo.llanteria.Clientes.AddCliente
 import com.jerbo.llanteria.R
 import com.jerbo.llanteria.Venta.AddVenta
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -27,7 +31,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setSupportActionBar(toolbar)
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
-        resultados = findViewById(R.id.resultados)
+
         val toggle = ActionBarDrawerToggle(
             this, drawerLayout, toolbar,
             R.string.navigation_drawer_open,
@@ -42,12 +46,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val ctx: Context = this
         venta.setOnClickListener {
             val intent = Intent(ctx, AddVenta::class.java)
-
             startActivity(intent)
+            finish()
         }
         cliente.setOnClickListener {
             val intent = Intent(ctx, AddCliente::class.java)
             startActivity(intent)
+            finish()
+        }
+        link_to_web.setOnClickListener{
+            val url = Uri.parse("http://198.23.255.30/~u20180584/facturacion/")
+            startActivity(Intent(Intent.ACTION_VIEW,url))
         }
 
 
@@ -71,37 +80,20 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.action_settings -> true
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
+
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.nav_home -> {
-                // Handle the camera action
+               startActivity(Intent(this,AddVenta::class.java))
+                finish()
             }
             R.id.nav_gallery -> {
-
+                startActivity(Intent(this,AddCliente::class.java))
+                finish()
             }
-            R.id.nav_slideshow -> {
 
-            }
-            R.id.nav_tools -> {
-
-            }
-            R.id.nav_share -> {
-
-            }
-            R.id.nav_send -> {
-
-            }
         }
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         drawerLayout.closeDrawer(GravityCompat.START)

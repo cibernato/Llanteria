@@ -194,6 +194,7 @@ class AddVenta : AppCompatActivity(), VentaDialogFragment.Metodos, ProductAdapte
             .setPositiveButton("Si") { _, _ ->
                 startActivity(Intent(this, MainActivity::class.java))
                 super.onBackPressed()
+                finish()
             }
             .setNegativeButton("No") { dialog, _ -> dialog.cancel() }
         val alertDialog = builder.create()
@@ -285,6 +286,7 @@ class AddVenta : AppCompatActivity(), VentaDialogFragment.Metodos, ProductAdapte
         return when (item.itemId) {
             R.id.addventa_confirmar -> {
                 pushToDataBase()
+                Log.e(TAG,"entra y error ")
                 true
             }
             android.R.id.home -> {
