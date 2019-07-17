@@ -113,10 +113,9 @@ class AddVenta : AppCompatActivity(), VentaDialogFragment.Metodos, ProductAdapte
             Toast.makeText(this, "Revise el producto", Toast.LENGTH_SHORT).show()
             return false
         }
-        return if (t.isEmpty() and (t == "") or (Integer.parseInt(t) >= list_productos[index].stock)) {
-            Log.e(TAG, "validateCantidad: Si entra el problea es la intergaz")
+        return if (t.isEmpty() and (t == "") or (Integer.parseInt(t) > list_productos[index].stock) or (Integer.parseInt(t)==0) ) {
             cantidad_layout.error =
-                "Ingrese cantidad menor a :" + list_productos[buscarItem(producto_layout.editText?.text.toString())].stock
+                "Ingrese cantidad menor o igual a :" + list_productos[buscarItem(producto_layout.editText?.text.toString())].stock
             false
         } else {
             cantidad_layout.error = null

@@ -78,6 +78,7 @@ open class AddCliente : AppCompatActivity(), CoroutineScope {
                 run {
                     startActivity(Intent(this, MainActivity::class.java))
                     super.onBackPressed()
+                    finish()
                 }
             }
             .setNegativeButton("No") { dialog, _ -> dialog.cancel() }
@@ -86,7 +87,6 @@ open class AddCliente : AppCompatActivity(), CoroutineScope {
     }
 
     private fun createUser() {
-
 
         val url = "https://llanteriamari.000webhostapp.com/insert_user.php?" +
                 "p1=" + dni_cliente.editText!!.text.toString().trim { it <= ' ' } + " & " +
