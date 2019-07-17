@@ -53,7 +53,6 @@ class AddVenta : AppCompatActivity(), VentaDialogFragment.Metodos, ProductAdapte
     private var pos: Int = 0
     private lateinit var modificar: Producto
     private var gson = Gson()
-    private lateinit var spinner_adapter: ArrayAdapter<CharSequence>
     private lateinit var queue: RequestQueue
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -137,10 +136,10 @@ class AddVenta : AppCompatActivity(), VentaDialogFragment.Metodos, ProductAdapte
         queue = Volley.newRequestQueue(this)
         checkSharedPreferences()
         updatePrice()
-        spinner_adapter =
-            ArrayAdapter.createFromResource(this, R.array.spinner_options, android.R.layout.simple_spinner_item)
-        spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        venta_spinner.adapter = spinner_adapter
+//        spinner_adapter =
+//            ArrayAdapter.createFromResource(this, R.array.spinner_options, android.R.layout.simple_spinner_item)
+//        spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
         adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, list)
         productAdapter = ProductAdapter(this, product_show, this)
         val linearLayoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
@@ -309,6 +308,7 @@ class AddVenta : AppCompatActivity(), VentaDialogFragment.Metodos, ProductAdapte
                 val cabID = withContext(Dispatchers.IO) { insertCab(dniId) }
                 if (withContext(Dispatchers.IO) { insertDet(cabID) }) {
                     clearUI()
+                    llenarProductos()
                     Toast.makeText(this@AddVenta, "Venta realizada correctamente", Toast.LENGTH_SHORT).show()
                 }
                 displayProgressBar(false)
@@ -371,11 +371,8 @@ class AddVenta : AppCompatActivity(), VentaDialogFragment.Metodos, ProductAdapte
     }
 
     suspend fun insertCab(dniId: String) = suspendCoroutine<String> {
-        val typeFact: String = if (venta_spinner.selectedItem.toString() == "Factura")
-            "1"
-        else
-            "2"
-        val headerData = "($typeFact,1,$dniId,1)"
+
+        val headerData = "(1,$dniId,1)"
         val url = "https://llanteriamari.000webhostapp.com/insert_comprobante.php?p1=$headerData"
         val stringRequest = StringRequest(Request.Method.GET, url,
             { response ->

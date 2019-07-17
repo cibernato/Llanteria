@@ -53,11 +53,7 @@
 					android:inputType="number"/>
 		</com.google.android.material.textfield.TextInputLayout>
 		
-		<Spinner
-				android:id="@+id/venta_spinner"
-				android:layout_width="fill_parent"
-				android:layout_height="wrap_content"
-				style="@style/Widget.AppCompat.Spinner"/>
+		
 	</LinearLayout>
 	
 	<LinearLayout
